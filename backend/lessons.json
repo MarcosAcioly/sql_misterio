@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "titulo": "A Cena do Crime",
+    "descricao": "O assassinato ocorreu em um hotel. Liste todas as pessoas cadastradas na base de dados.",
+    "comando_esperado": "SELECT * FROM pessoas;"
+  },
+  {
+    "id": 2,
+    "titulo": "Testemunhas",
+    "descricao": "Liste apenas os nomes únicos das pessoas que estavam no local do crime.",
+    "comando_esperado": "SELECT DISTINCT nome FROM pessoas;"
+  },
+  {
+    "id": 3,
+    "titulo": "Filtrando Suspeitos",
+    "descricao": "Mostre apenas as pessoas suspeitas (suspeito = 1).",
+    "comando_esperado": "SELECT * FROM pessoas WHERE suspeito = 1;"
+  },
+  {
+    "id": 4,
+    "titulo": "O Mais Perigoso",
+    "descricao": "Liste os suspeitos ordenados pela idade em ordem decrescente para ver quem é mais velho.",
+    "comando_esperado": "SELECT * FROM pessoas WHERE suspeito = 1 ORDER BY idade DESC;"
+  },
+  {
+    "id": 5,
+    "titulo": "Suspeitos Combinados",
+    "descricao": "Encontre os suspeitos que são maiores de 30 anos E estavam no hotel.",
+    "comando_esperado": "SELECT * FROM pessoas WHERE suspeito = 1 AND idade > 30;"
+  },
+  {
+    "id": 6,
+    "titulo": "O Inocente",
+    "descricao": "Mostre apenas as pessoas que NÃO são suspeitas.",
+    "comando_esperado": "SELECT * FROM pessoas WHERE NOT suspeito = 1;"
+  },
+  {
+    "id": 7,
+    "titulo": "Novo Depoimento",
+    "descricao": "Adicione uma nova testemunha chamada 'Lucas Alves', 25 anos, profissão 'Estudante' e não suspeito.",
+    "comando_esperado": "INSERT INTO pessoas (nome, idade, profissao, suspeito) VALUES ('Lucas Alves', 25, 'Estudante', 0);"
+  },
+  {
+    "id": 8,
+    "titulo": "Mudança de Versão",
+    "descricao": "Atualize a profissão de 'Rafael Costa' para 'Engenheiro', pois ele mentiu antes.",
+    "comando_esperado": "UPDATE pessoas SET profissao = 'Engenheiro' WHERE nome = 'Rafael Costa';"
+  },
+  {
+    "id": 9,
+    "titulo": "Excluindo Inocentes",
+    "descricao": "Remova 'Lucas Alves' da lista, pois ele tem álibi confirmado.",
+    "comando_esperado": "DELETE FROM pessoas WHERE nome = 'Lucas Alves';"
+  },
+  {
+    "id": 10,
+    "titulo": "Quem não Tem Profissão",
+    "descricao": "Liste as pessoas sem profissão definida (profissao nula) para verificar suspeitos ocultos.",
+    "comando_esperado": "SELECT * FROM pessoas WHERE profissao IS NULL;"
+  }
+]
