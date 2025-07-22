@@ -21,6 +21,18 @@ if (stripos($sql, "drop") !== false || stripos($sql, "alter") !== false) {
 }
 
 $sqlLimpo = strtolower(trim($sql));
+
+// Simula o INSERT apenas na lição 7 (antes de executar qualquer query)
+if ($esperado === "insert into pessoas (nome, idade, profissao, suspeito) values ('lucas alves', 25, 'estudante', 0);") {
+    echo json_encode([
+        "ok" => ($sqlLimpo === $esperado),
+        "feedback" => ($sqlLimpo === $esperado) ? "✅ Correto! Muito bem." : "❌ Tente novamente. Veja a descrição da lição.",
+        "resultado" => "Comando executado com sucesso."
+    ]);
+    $conn->close();
+    exit;
+}
+
 $ok = ($sqlLimpo === $esperado);
 $feedback = $ok ? "✅ Correto! Muito bem." : "❌ Tente novamente. Veja a descrição da lição.";
 
